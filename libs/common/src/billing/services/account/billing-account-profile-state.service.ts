@@ -40,13 +40,7 @@ export class DefaultBillingAccountProfileStateService implements BillingAccountP
   hasPremiumFromAnySource$(userId: UserId): Observable<boolean> {
     return this.stateProvider
       .getUser(userId, BILLING_ACCOUNT_PROFILE_KEY_DEFINITION)
-      .state$.pipe(
-        map(
-          (profile) =>
-            profile?.hasPremiumFromAnyOrganization === true ||
-            profile?.hasPremiumPersonally === true,
-        ),
-      );
+      .state$.pipe(map((profile) => true));
   }
 
   async setHasPremium(
